@@ -9,7 +9,7 @@ import * as firebase from 'firebase';
 })
 export class LoginComponent {
 
-  constructor(public afAuth: AngularFireAuth) { 
+  constructor(private afAuth: AngularFireAuth) { 
   }
 
   login() { 
