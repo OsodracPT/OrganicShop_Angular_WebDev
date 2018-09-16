@@ -21,6 +21,7 @@
 
   </product-preview>
 
-  <h3 [ngStyle]="{'text-align':center}">No Results found for {{search}}</h3>
+  <h3 *ngIf="!fetching && searchResults.lenght == 0 && search.lenght > 0"
+  [ngStyle]="{'text-align':'center'}">No Results found for {{search}}</h3>
 </div>
 </div>

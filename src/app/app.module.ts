@@ -5,7 +5,7 @@ import { NgModule, Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
-
+import { HttpClientModule } from '@angular/common/http'
 import { AppComponent } from './app.component';
 import { BsNavbarComponent } from './bs-navbar/bs-navbar.component';
 import { HomeComponent } from './home/home.component';
@@ -47,6 +47,7 @@ import { MovieService } from './movie.service';
     NgbModule.forRoot(),
     AngularFontAwesomeModule,
     FormsModule,
+    HttpClientModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent},
       { path: 'products', component: ProductsComponent},
