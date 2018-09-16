@@ -10,11 +10,8 @@
 </div>
 
 <div class="row">
-  <product-preview></product-preview>
-  <product-preview></product-preview>
-  <product-preview></product-preview>
-  <product-preview></product-preview>
-  <product-preview></product-preview>
+  <product-preview *ngFor="let movie of searchResults; let i = index" [movie]="movie"></product-preview>
+
   <h3 [ngStyle]="{'text-align':center}">No Results found for {{search}}</h3>
 </div>
 </div>

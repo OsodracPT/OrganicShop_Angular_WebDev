@@ -1,12 +1,16 @@
 <bs-navbar></bs-navbar>
 <app-header></app-header>
-<app-search></app-search>
 
 <main role="main" class="container">
+    <div class="container">
+        <app-products class="row" [movie]="currentMovie"></app-products>
+        <app-search class="row"></app-search>
+    </div>
+
 
 <router-outlet></router-outlet>
 
-<app-footer></app-footer>
 </main><!-- /.container -->
+<app-footer></app-footer>
 
 

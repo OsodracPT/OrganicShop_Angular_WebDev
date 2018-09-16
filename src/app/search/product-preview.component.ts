@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Movie } from './../Movie';
+
 
 @Component({
   selector: 'product-preview',
@@ -6,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styles: []
 })
 export class ProductPreviewComponent implements OnInit {
+
+  @Input() movie:Movie = {}
 
   constructor() { }
 
