@@ -1,0 +1,20 @@
+<div class="col s12">
+<!-- Search form -->
+<div class="input-group col-md-4">
+  <input class="form-control py-2 border-right-0 border" type="search" placeholder="Search A Product" id="example-search-input" [(ngModel)]="search">
+  <span class="input-group-append">
+      <button class="btn btn-outline-secondary border-left-0 border" type="button">
+          <i class="fa fa-search"></i>
+      </button>
+    </span>
+</div>
+
+<div class="row">
+  <product-preview></product-preview>
+  <product-preview></product-preview>
+  <product-preview></product-preview>
+  <product-preview></product-preview>
+  <product-preview></product-preview>
+  <h3 [ngStyle]="{'text-align':center}">No Results found for {{search}}</h3>
+</div>
+</div>

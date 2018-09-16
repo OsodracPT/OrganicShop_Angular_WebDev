@@ -16,6 +16,11 @@ import { OrderSuccessComponent } from './order-success/order-success.component';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
+import { HeaderComponent } from './header/header.component';
+import { SearchComponent } from './search/search.component';
+import { ProductPreviewComponent } from './search/product-preview.component';
+import { FooterComponent } from './footer/footer.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -29,12 +34,18 @@ import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.componen
     MyOrdersComponent,
     AdminProductsComponent,
     AdminOrdersComponent,
-    LoginComponent
-  ],
+    LoginComponent,
+    HeaderComponent,
+    SearchComponent,
+    ProductPreviewComponent,
+    FooterComponent, 
+    FooterComponent,
+    ],
   imports: [
     BrowserModule, 
     NgbModule.forRoot(),
     AngularFontAwesomeModule,
+    FormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent},
       { path: 'products', component: ProductsComponent},
