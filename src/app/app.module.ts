@@ -21,6 +21,7 @@ import { SearchComponent } from './search/search.component';
 import { ProductPreviewComponent } from './search/product-preview.component';
 import { FooterComponent } from './footer/footer.component';
 import { FormsModule } from '@angular/forms';
+import { MovieService } from './movie.service';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,7 @@ import { FormsModule } from '@angular/forms';
 
     ])
   ],
-  providers: [],
+  providers: [MovieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

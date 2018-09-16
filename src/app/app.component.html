@@ -1,10 +1,9 @@
-<bs-navbar></bs-navbar>
-<app-header></app-header>
+<bs-navbar (startNewSearch)="startNewSearch()"></bs-navbar>
 
 <main role="main" class="container">
     <div class="container">
-        <app-products class="row" [movie]="currentMovie"></app-products>
-        <app-search class="row"></app-search>
+        <app-products *ngIf="currentMovie" class="row" [movie]="currentMovie"></app-products>
+        <app-search *ngIf="!currentMovie" class="row"></app-search>
     </div>
 
 

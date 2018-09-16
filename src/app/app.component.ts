@@ -1,3 +1,4 @@
+import { MovieService } from './movie.service';
 import { data } from './mock-data';
 import { Component } from '@angular/core';
 import { Movie } from './Movie';
@@ -11,5 +12,16 @@ export class AppComponent {
   
   title = 'oshop';
   
-  currentMovie:Movie = data[0]
+  currentMovie:Movie = null
+
+  constructor(private movieService:MovieService){
+    movieService
+    .currentMovie
+    .subscribe(movie=>{this.currentMovie=movie
+    })
+  }
+
+  startNewSearch(){
+    this.movieService.changeSelectedMovie(null)
+  }
 }
