@@ -15,7 +15,5 @@ export class ProductsComponent implements OnInit {
   ngOnInit() {
   }
 
-  getPosterUrl(path:string){
-    return "http://www.joblo.com/posters/images/full/loganimaxposter.jpg"
-  }
+
 }

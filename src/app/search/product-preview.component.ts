@@ -16,4 +16,9 @@ export class ProductPreviewComponent implements OnInit {
   ngOnInit() {
   }
 
+  backdropStyle = ()=>({
+    'background': `linear-gradient(180deg, rgba(0,0,0,.7), transparent), url(${this.movie.backdropUrl})`,
+    'background-size':'cover'
+  })
+
 }
