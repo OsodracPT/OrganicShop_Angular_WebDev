@@ -11,7 +11,6 @@ export class UsernameValidators{
 
     static shouldBeUnique(control: AbstractControl) : Promise<ValidationErrors | null> {
         return new Promise((resolve, reject) => {
-           
             setTimeout(()=>{
                 if (control.value === 'pedro')
                 {
@@ -19,9 +18,9 @@ export class UsernameValidators{
                     resolve({ shouldBeUnique: true });
                 }
                 else 
-                    
+                    resolve(null);
                     console.log("HI");
-                }, 2000);
+                }, 5000);
         });        
     }
 }

@@ -24,6 +24,12 @@ export class MyOrdersComponent implements OnInit {
   ngOnInit() {
   }
 
+  login() {
+    this.form.setErrors({
+      invalidLogin:true
+    });    
+  }
+
   get username() {
     return this.form.get('username');
   }
