@@ -20,7 +20,7 @@ import { HeaderComponent } from './header/header.component';
 import { SearchComponent } from './search/search.component';
 import { ProductPreviewComponent } from './search/product-preview.component';
 import { FooterComponent } from './footer/footer.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MovieService } from './movie.service';
 import { ContactFormComponent } from './contact-form/contact-form.component';
 
@@ -41,7 +41,8 @@ import { ContactFormComponent } from './contact-form/contact-form.component';
     SearchComponent,
     ProductPreviewComponent,
     FooterComponent, 
-    FooterComponent, ContactFormComponent,
+    FooterComponent, 
+    ContactFormComponent,
     ],
   imports: [
     BrowserModule, 
@@ -60,7 +61,8 @@ import { ContactFormComponent } from './contact-form/contact-form.component';
       { path: 'admin/products', component: AdminProductsComponent},
       { path: 'admin/orders', component: AdminOrdersComponent}
 
-    ])
+    ]),
+    ReactiveFormsModule
   ],
   providers: [MovieService],
   bootstrap: [AppComponent]
