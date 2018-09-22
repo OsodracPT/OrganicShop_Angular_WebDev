@@ -22,6 +22,7 @@ import { ProductPreviewComponent } from './search/product-preview.component';
 import { FooterComponent } from './footer/footer.component';
 import { FormsModule } from '@angular/forms';
 import { MovieService } from './movie.service';
+import { ContactFormComponent } from './contact-form/contact-form.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,7 @@ import { MovieService } from './movie.service';
     SearchComponent,
     ProductPreviewComponent,
     FooterComponent, 
-    FooterComponent,
+    FooterComponent, ContactFormComponent,
     ],
   imports: [
     BrowserModule, 
