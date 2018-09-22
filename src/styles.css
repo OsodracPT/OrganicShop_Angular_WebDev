@@ -19,6 +19,11 @@ main {
     flex: 1 0 auto;
 }
 
+.form-control.ng-touched.ng-invalid{
+    border: 2px solid red
+} 
+
+
 .movie-poster{
     width: 100%;
     opacity: 100;
