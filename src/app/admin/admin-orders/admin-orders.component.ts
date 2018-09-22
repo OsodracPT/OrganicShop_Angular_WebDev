@@ -1,4 +1,5 @@
-import { FormGroup, FormArray, FormControl } from '@angular/forms';
+import { ValidationErrors, Validators } from '@angular/forms';
+import { FormGroup, FormArray, FormControl, FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,9 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminOrdersComponent implements OnInit {
 
-  form = new FormGroup({
-    topics: new FormArray([])
-  });
+  form;
 
   addTopic(topic: HTMLInputElement){
     this.topics
@@ -27,7 +26,16 @@ export class AdminOrdersComponent implements OnInit {
     return this.form.get('topics') as FormArray;
   }
 
-  constructor() { }
+  constructor(fb: FormBuilder) {
+    this.form = fb.group({
+      name: ['', Validators.required],
+      contact: fb.group({
+        email: [],
+        phone: []
+      }),
+      topics: fb.array([])
+    });
+   }
 
   ngOnInit() {
   }
