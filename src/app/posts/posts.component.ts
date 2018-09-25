@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Jsonp } from '@angular/http';
 
 @Component({
   selector: 'app-posts',
@@ -30,6 +30,13 @@ export class PostsComponent implements OnInit {
       this.posts.splice(0, 0, post);
       console.log(response.json());
     });
+  }
+
+  updatePost(post){
+    this.http.patch(this.url + '/' + post.id, JSON.stringify({ isRead: true}))
+    .subscribe(response => {
+      console.log(response.json());
+    })
   }
 
 }
