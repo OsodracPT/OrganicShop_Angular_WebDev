@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { HttpClientModule } from '@angular/common/http'
+import {HttpModule, Http} from '@angular/http';
 import { AppComponent } from './app.component';
 import { BsNavbarComponent } from './bs-navbar/bs-navbar.component';
 import { HomeComponent } from './home/home.component';
@@ -23,6 +24,7 @@ import { FooterComponent } from './footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MovieService } from './movie.service';
 import { ContactFormComponent } from './contact-form/contact-form.component';
+import { PostsComponent } from './posts/posts.component';
 
 @NgModule({
   declarations: [
@@ -42,13 +44,14 @@ import { ContactFormComponent } from './contact-form/contact-form.component';
     ProductPreviewComponent,
     FooterComponent, 
     FooterComponent, 
-    ContactFormComponent,
+    ContactFormComponent, PostsComponent,
     ],
   imports: [
     BrowserModule, 
     NgbModule.forRoot(),
     AngularFontAwesomeModule,
     FormsModule,
+    HttpModule,
     HttpClientModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent},
@@ -64,7 +67,9 @@ import { ContactFormComponent } from './contact-form/contact-form.component';
     ]),
     ReactiveFormsModule
   ],
-  providers: [MovieService],
+  providers: [
+    MovieService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
