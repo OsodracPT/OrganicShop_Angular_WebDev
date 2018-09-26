@@ -1,5 +1,5 @@
+import { PostService } from './services/post.service';
 import { LoginComponent } from './login/login.component';
-import { environment } from './../environments/environment';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -68,7 +68,8 @@ import { PostsComponent } from './posts/posts.component';
     ReactiveFormsModule
   ],
   providers: [
-    MovieService
+    MovieService,
+    PostService
   ],
   bootstrap: [AppComponent]
 })
