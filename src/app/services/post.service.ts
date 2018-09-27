@@ -1,55 +1,17 @@
-import { AppError } from './../common/app-error';
-import { BadRequestError } from './../common/bad-request-error';
-import { NotFoundError } from './../common/not-found-error';
+import { DataService } from './data.service';
 import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/catch';
-import { Observable } from 'rxjs';
 import 'rxjs/add/observable/throw';
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class PostService {
+export class PostService extends DataService {
 
-  private url = 'https://jsonplaceholder.typicode.com/posts';
-
-
-  constructor(private http: Http) { 
-
-  }
-
-  getPosts(){
-    return this.http.get(this.url)
-    .catch(this.handleError);
-  }
-
-  createPost(post){
-    return  this.http.post(this.url, JSON.stringify(post))
-    .catch(this.handleError);
-  }
-
-  updatePost(post){
-    return this.http.patch(this.url + '/' + post.id, 
-      JSON.stringify({ isRead: true}))
-        .catch(this.handleError);
-  }
-
-  deletePost(id){
-    return this.http.delete(this.url + '/' + id)
-    .catch(this.handleError);
-
-  }
-
-  private handleError(error: Response) {
-    if (error.status === 400 )
-      return Observable.throw(new BadRequestError(error.json()));
-
-    if ( error.status ===404)
-      return Observable.throw(new NotFoundError());
-
-    return Observable.throw(new AppError(error));
+  constructor(http: Http) { 
+    super('https://jsonplaceholder.typicode.com/posts', http);
   }
 
 }
