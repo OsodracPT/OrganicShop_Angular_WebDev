@@ -5,6 +5,7 @@ import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs';
+import 'rxjs/add/observable/throw';
 
 
 @Injectable({
@@ -27,9 +28,9 @@ export class PostService {
     return  this.http.post(this.url, JSON.stringify(post))
     .catch((error: Response) => {
       if (error.status === 400 )
-        return Observable.throw(new BadRequestError(error.json()))
+        return Observable.throw(new BadRequestError(error.json()));
 
-      return Observable.throw(new AppError(error.json()))
+      return Observable.throw(new AppError(error.json()));
     });
   }
 
@@ -41,9 +42,9 @@ export class PostService {
     return this.http.delete(this.url + '/' + id)
     .catch((error: Response) => {
       if ( error.status ===404)
-      return Observable.throw(new NotFoundError())
+      return Observable.throw(new NotFoundError());
 
-    return Observable.throw(new AppError(error))
+    return Observable.throw(new AppError(error));
     });
 
   }
