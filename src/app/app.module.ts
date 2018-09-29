@@ -1,4 +1,4 @@
-import { GitHubHomeComponent } from './git-hub-home/git-hub-home.component';
+import { GithubFollowersService } from './services/github-followers.service';
 import { GitHubFollowersComponent } from './git-hub-followers/git-hub-followers.component';
 import { AppErrorHandler } from './common/app-error-handler';
 import { ErrorHandler } from '@angular/core';
@@ -30,6 +30,7 @@ import { MovieService } from './movie.service';
 import { ContactFormComponent } from './contact-form/contact-form.component';
 import { PostsComponent } from './posts/posts.component';
 import { GitHubProfileComponent } from './git-hub-profile/git-hub-profile.component';
+import { GitHubHomeComponent } from './git-hub-home/git-hub-home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
@@ -50,7 +51,12 @@ import { NotFoundComponent } from './not-found/not-found.component';
     ProductPreviewComponent,
     FooterComponent, 
     FooterComponent, 
-    ContactFormComponent, PostsComponent, GitHubProfileComponent, NotFoundComponent,
+    ContactFormComponent, 
+    PostsComponent, 
+    GitHubProfileComponent, 
+    NotFoundComponent,
+    GitHubHomeComponent,
+    GitHubFollowersComponent
     ],
   imports: [
     BrowserModule, 
@@ -79,6 +85,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
   ],
   providers: [
     MovieService,
+    GithubFollowersService,
     PostService,
     { provide: ErrorHandler, useClass: AppErrorHandler}
   ],

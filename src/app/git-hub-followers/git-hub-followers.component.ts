@@ -1,3 +1,4 @@
+import { GithubFollowersService } from '../services/github-followers.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./git-hub-followers.component.css']
 })
 export class GitHubFollowersComponent implements OnInit {
+  followers: any[];
 
-  constructor() { }
+
+  constructor(private service: GithubFollowersService) { }
 
   ngOnInit() {
+    this.service.getAll()
+      .subscribe(followers => this.followers = followers.json());
   }
 
 }
