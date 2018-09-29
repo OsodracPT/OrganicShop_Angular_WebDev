@@ -75,7 +75,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
       { path: 'login', component: LoginComponent},
       { path: 'admin/products', component: AdminProductsComponent},
       { path: 'github', component: GitHubHomeComponent},
-      { path: 'followers/:username', component: GitHubProfileComponent},
+      { path: 'followers/:id/:username', component: GitHubProfileComponent},
       { path: 'followers', component: GitHubFollowersComponent},
       { path: 'posts', component: PostsComponent},
       { path: 'admin/orders', component: AdminOrdersComponent},
