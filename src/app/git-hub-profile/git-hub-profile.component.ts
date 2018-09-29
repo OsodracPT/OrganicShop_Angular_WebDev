@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-git-hub-profile',
@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class GitHubProfileComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.route.paramMap
@@ -18,4 +18,9 @@ export class GitHubProfileComponent implements OnInit {
       });
   }
 
+  submit(){
+    this.router.navigate(['/followers'], {
+      queryParams: {page:1, order: 'newest'}
+    });
+  }
 }
