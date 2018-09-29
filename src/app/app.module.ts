@@ -1,3 +1,5 @@
+import { GitHubHomeComponent } from './git-hub-home/git-hub-home.component';
+import { GitHubFollowersComponent } from './git-hub-followers/git-hub-followers.component';
 import { AppErrorHandler } from './common/app-error-handler';
 import { ErrorHandler } from '@angular/core';
 import { PostService } from './services/post.service';
@@ -27,6 +29,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MovieService } from './movie.service';
 import { ContactFormComponent } from './contact-form/contact-form.component';
 import { PostsComponent } from './posts/posts.component';
+import { GitHubProfileComponent } from './git-hub-profile/git-hub-profile.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +50,7 @@ import { PostsComponent } from './posts/posts.component';
     ProductPreviewComponent,
     FooterComponent, 
     FooterComponent, 
-    ContactFormComponent, PostsComponent,
+    ContactFormComponent, PostsComponent, GitHubProfileComponent, NotFoundComponent,
     ],
   imports: [
     BrowserModule, 
@@ -64,8 +68,12 @@ import { PostsComponent } from './posts/posts.component';
       { path: 'my/orders', component: MyOrdersComponent},
       { path: 'login', component: LoginComponent},
       { path: 'admin/products', component: AdminProductsComponent},
-      { path: 'admin/orders', component: AdminOrdersComponent}
-
+      { path: 'github', component: GitHubHomeComponent},
+      { path: 'followers/:username', component: GitHubProfileComponent},
+      { path: 'followers', component: GitHubFollowersComponent},
+      { path: 'posts', component: PostsComponent},
+      { path: 'admin/orders', component: AdminOrdersComponent},
+      { path: '**', component: NotFoundComponent}
     ]),
     ReactiveFormsModule
   ],
