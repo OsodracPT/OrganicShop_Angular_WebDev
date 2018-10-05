@@ -1,3 +1,7 @@
+import { MockBackend } from '@angular/http/testing';
+import { fakeBackendProvider } from './helpers/fake-backend';
+import { AuthService } from './services/auth.service';
+import { OrderService } from './services/order.service';
 import { GithubFollowersService } from './services/github-followers.service';
 import { GitHubFollowersComponent } from './git-hub-followers/git-hub-followers.component';
 import { AppErrorHandler } from './common/app-error-handler';
@@ -10,7 +14,7 @@ import { RouterModule } from '@angular/router';
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { HttpClientModule } from '@angular/common/http'
-import {HttpModule, Http} from '@angular/http';
+import { HttpModule, Http, BaseRequestOptions } from '@angular/http';
 import { AppComponent } from './app.component';
 import { BsNavbarComponent } from './bs-navbar/bs-navbar.component';
 import { HomeComponent } from './home/home.component';
@@ -32,6 +36,8 @@ import { PostsComponent } from './posts/posts.component';
 import { GitHubProfileComponent } from './git-hub-profile/git-hub-profile.component';
 import { GitHubHomeComponent } from './git-hub-home/git-hub-home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { AdminComponent } from './admin/admin.component';
+import { NoAccessComponent } from './no-access/no-access.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +62,9 @@ import { NotFoundComponent } from './not-found/not-found.component';
     GitHubProfileComponent, 
     NotFoundComponent,
     GitHubHomeComponent,
-    GitHubFollowersComponent
+    GitHubFollowersComponent,
+    AdminComponent,
+    NoAccessComponent
     ],
   imports: [
     BrowserModule, 
@@ -73,6 +81,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
       { path: 'order-success', component: OrderSuccessComponent},
       { path: 'my/orders', component: MyOrdersComponent},
       { path: 'login', component: LoginComponent},
+      { path: 'admin', component: AdminComponent},
+      { path: 'no-access', component: NoAccessComponent},
       { path: 'admin/products', component: AdminProductsComponent},
       { path: 'github', component: GitHubHomeComponent},
       { path: 'followers/:id/:username', component: GitHubProfileComponent},
@@ -85,9 +95,16 @@ import { NotFoundComponent } from './not-found/not-found.component';
   ],
   providers: [
     MovieService,
+    OrderService,
+    AuthService,
     GithubFollowersService,
     PostService,
-    { provide: ErrorHandler, useClass: AppErrorHandler}
+    { provide: ErrorHandler, useClass: AppErrorHandler},
+
+    //For creating a mock back-end
+    fakeBackendProvider,
+    MockBackend,
+    BaseRequestOptions
   ],
   bootstrap: [AppComponent]
 })
