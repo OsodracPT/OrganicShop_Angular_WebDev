@@ -1,3 +1,4 @@
+import { AdminAuthGuard } from './services/admin-auth-guard.service';
 import { AuthGuardService } from './services/auth-guard.service';
 import { MockBackend } from '@angular/http/testing';
 import { fakeBackendProvider } from './helpers/fake-backend';
@@ -84,7 +85,7 @@ import { NoAccessComponent } from './no-access/no-access.component';
       { path: 'login', component: LoginComponent},
       { path: 'admin', 
       component: AdminComponent, 
-      canActivate:[AuthGuardService]},
+      canActivate:[AuthGuardService, AdminAuthGuard]},
       { path: 'no-access', component: NoAccessComponent},
       { path: 'admin/products', component: AdminProductsComponent},
       { path: 'github', component: GitHubHomeComponent},
@@ -103,6 +104,7 @@ import { NoAccessComponent } from './no-access/no-access.component';
     GithubFollowersService,
     PostService,
     AuthGuardService,
+    AdminAuthGuard,
     { provide: ErrorHandler, useClass: AppErrorHandler},
 
     //For creating a mock back-end
