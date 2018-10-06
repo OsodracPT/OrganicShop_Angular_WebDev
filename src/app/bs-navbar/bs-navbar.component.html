@@ -9,8 +9,10 @@
         <li class="nav-item">
             <a class="nav-link" routerLink="/github">GitHub</a>
           </li>
-          <li *ngIf="authService.isLoggedIn()" class="nav-item">
-            <a class="nav-link" routerLink="/admin">Admin</a>
+          <li *ngIf="authService.isLoggedIn() && authService.currentUser.admin" 
+          class="nav-item">
+            <a class="nav-link" 
+            routerLink="/admin">Admin</a>
           </li>
           <li *ngIf="!authService.isLoggedIn()" class="nav-item">
             <a class="nav-link" routerLink="/login">Login</a>
