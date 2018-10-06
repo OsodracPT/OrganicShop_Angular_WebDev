@@ -1,3 +1,4 @@
+import { AuthGuardService } from './services/auth-guard.service';
 import { MockBackend } from '@angular/http/testing';
 import { fakeBackendProvider } from './helpers/fake-backend';
 import { AuthService } from './services/auth.service';
@@ -81,7 +82,9 @@ import { NoAccessComponent } from './no-access/no-access.component';
       { path: 'order-success', component: OrderSuccessComponent},
       { path: 'my/orders', component: MyOrdersComponent},
       { path: 'login', component: LoginComponent},
-      { path: 'admin', component: AdminComponent},
+      { path: 'admin', 
+      component: AdminComponent, 
+      canActivate:[AuthGuardService]},
       { path: 'no-access', component: NoAccessComponent},
       { path: 'admin/products', component: AdminProductsComponent},
       { path: 'github', component: GitHubHomeComponent},
@@ -99,6 +102,7 @@ import { NoAccessComponent } from './no-access/no-access.component';
     AuthService,
     GithubFollowersService,
     PostService,
+    AuthGuardService,
     { provide: ErrorHandler, useClass: AppErrorHandler},
 
     //For creating a mock back-end
