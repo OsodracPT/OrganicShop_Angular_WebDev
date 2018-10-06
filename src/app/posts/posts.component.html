@@ -6,14 +6,17 @@ type="text" class="form-control">
   <li 
       *ngFor="let post of posts"
       class="list-group-item">
-      <button 
-      (click)="deletePost(post)"
-      class="btn btn-default btn-sm">
-      Delete
-      </button>
-      <button (click)="updatePost(post)" 
-        class="btn btn-default btn-sm">
-        Update</button>
+      <div class="btn-toolbar">
+            <button 
+            (click)="deletePost(post)"
+            class="btn btn-default btn-sm">
+            Delete
+            </button>
+            <button (click)="updatePost(post)" 
+              class="btn btn-default btn-sm">
+              Update</button>
+
+      </div>
     {{post.title}}
     </li>
 </ul>

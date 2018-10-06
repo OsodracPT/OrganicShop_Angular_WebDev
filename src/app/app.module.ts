@@ -1,3 +1,11 @@
+import { AdminAuthGuard } from './services/admin-auth-guard.service';
+import { AuthGuardService } from './services/auth-guard.service';
+import { MockBackend } from '@angular/http/testing';
+import { fakeBackendProvider } from './helpers/fake-backend';
+import { AuthService } from './services/auth.service';
+import { OrderService } from './services/order.service';
+import { GithubFollowersService } from './services/github-followers.service';
+import { GitHubFollowersComponent } from './git-hub-followers/git-hub-followers.component';
 import { AppErrorHandler } from './common/app-error-handler';
 import { ErrorHandler } from '@angular/core';
 import { PostService } from './services/post.service';
@@ -8,7 +16,7 @@ import { RouterModule } from '@angular/router';
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { HttpClientModule } from '@angular/common/http'
-import {HttpModule, Http} from '@angular/http';
+import { HttpModule, Http, BaseRequestOptions } from '@angular/http';
 import { AppComponent } from './app.component';
 import { BsNavbarComponent } from './bs-navbar/bs-navbar.component';
 import { HomeComponent } from './home/home.component';
@@ -27,6 +35,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MovieService } from './movie.service';
 import { ContactFormComponent } from './contact-form/contact-form.component';
 import { PostsComponent } from './posts/posts.component';
+import { GitHubProfileComponent } from './git-hub-profile/git-hub-profile.component';
+import { GitHubHomeComponent } from './git-hub-home/git-hub-home.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { AdminComponent } from './admin/admin.component';
+import { NoAccessComponent } from './no-access/no-access.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +59,14 @@ import { PostsComponent } from './posts/posts.component';
     ProductPreviewComponent,
     FooterComponent, 
     FooterComponent, 
-    ContactFormComponent, PostsComponent,
+    ContactFormComponent, 
+    PostsComponent, 
+    GitHubProfileComponent, 
+    NotFoundComponent,
+    GitHubHomeComponent,
+    GitHubFollowersComponent,
+    AdminComponent,
+    NoAccessComponent
     ],
   imports: [
     BrowserModule, 
@@ -63,16 +83,34 @@ import { PostsComponent } from './posts/posts.component';
       { path: 'order-success', component: OrderSuccessComponent},
       { path: 'my/orders', component: MyOrdersComponent},
       { path: 'login', component: LoginComponent},
+      { path: 'admin', 
+      component: AdminComponent, 
+      canActivate:[AuthGuardService, AdminAuthGuard]},
+      { path: 'no-access', component: NoAccessComponent},
       { path: 'admin/products', component: AdminProductsComponent},
-      { path: 'admin/orders', component: AdminOrdersComponent}
-
+      { path: 'github', component: GitHubHomeComponent},
+      { path: 'followers/:id/:username', component: GitHubProfileComponent},
+      { path: 'followers', component: GitHubFollowersComponent},
+      { path: 'posts', component: PostsComponent},
+      { path: 'admin/orders', component: AdminOrdersComponent},
+      { path: '**', component: NotFoundComponent}
     ]),
     ReactiveFormsModule
   ],
   providers: [
     MovieService,
+    OrderService,
+    AuthService,
+    GithubFollowersService,
     PostService,
-    { provide: ErrorHandler, useClass: AppErrorHandler}
+    AuthGuardService,
+    AdminAuthGuard,
+    { provide: ErrorHandler, useClass: AppErrorHandler},
+
+    //For creating a mock back-end
+    fakeBackendProvider,
+    MockBackend,
+    BaseRequestOptions
   ],
   bootstrap: [AppComponent]
 })
