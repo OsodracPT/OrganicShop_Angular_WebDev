@@ -8,10 +8,12 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class BsNavbarComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  constructor(public authService: AuthService) { }
+
+  @Output() startNewSearch = new EventEmitter();
 
   ngOnInit() {
   }
 
-  @Output() startNewSearch = new EventEmitter()
+
 }
